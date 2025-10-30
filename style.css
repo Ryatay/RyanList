@@ -1,0 +1,115 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #b30000, #004d00);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid white;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+#wishlist {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wishlist {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.gift-card {
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  padding: 15px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.gift-card:hover {
+  transform: scale(1.05);
+}
+
+.gift-card img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.gift-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0 5px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #ffea00;
+}
+
+.add-btn {
+  background: #00c853;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background: #009624;
+}
+
+a {
+  display: inline-block;
+  color: #ffeb3b;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  font-size: 0.9em;
+}
+
+/* Snow animation */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  z-index: 9999;
+  user-select: none;
+  animation: fall 10s linear infinite;
+  opacity: 0.8;
+  color: white;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-delay: 2s; }
+.snowflake:nth-child(3) { left: 30%; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 50%; animation-delay: 6s; }
+.snowflake:nth-child(5) { left: 70%; animation-delay: 1s; }
+.snowflake:nth-child(6) { left: 90%; animation-delay: 3s; }
