@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan’s Christmas Wishlist 🎄</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+  </div>
+
+  <header>
+    <h1>Ryan’s Christmas Wishlist 🎁</h1>
+    <p>Total so far: <span id="total">£0.00</span></p>
+    <button id="reset">Reset Total</button>
+  </header>
+
+  <main>
+    <div class="wishlist">
+
+      <!-- Gift 1 -->
+      <div class="gift-card">
+        <img src="https://via.placeholder.com/200x150?text=Gift+1" alt="Gift 1" />
+        <h2>Headphones</h2>
+        <p>Nice over-ear headphones for music 🎧</p>
+        <p class="price">£59.99</p>
+        <a href="https://example.com" target="_blank">View item</a>
+        <button class="add-btn" data-price="59.99">Add to Total</button>
+      </div>
+
+      <!-- Gift 2 -->
+      <div class="gift-card">
+        <img src="https://via.placeholder.com/200x150?text=Gift+2" alt="Gift 2" />
+        <h2>New Hoodie</h2>
+        <p>Comfy oversized hoodie, black or grey 🖤</p>
+        <p class="price">£35.00</p>
+        <a href="https://example.com" target="_blank">View item</a>
+        <button class="add-btn" data-price="35.00">Add to Total</button>
+      </div>
+
+      <!-- Gift 3 -->
+      <div class="gift-card">
+        <img src="https://via.placeholder.com/200x150?text=Gift+3" alt="Gift 3" />
+        <h2>Art Supplies</h2>
+        <p>Sketchbook, pens and markers ✏️</p>
+        <p class="price">£20.50</p>
+        <a href="https://example.com" target="_blank">View item</a>
+        <button class="add-btn" data-price="20.50">Add to Total</button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Made by Ryan with 🎅 and 🎄</p>
+  </footer>
+
+  <script>
+    const totalDisplay = document.getElementById('total');
+    const addButtons = document.querySelectorAll('.add-btn');
+    const resetBtn = document.getElementById('reset');
+
+    // Load total from cookies
+    let total = parseFloat(getCookie('wishlistTotal') || 0);
+    updateTotalDisplay();
+
+    addButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const price = parseFloat(button.dataset.price);
+        total += price;
+        setCookie('wishlistTotal', total, 7);
+        updateTotalDisplay();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      total = 0;
+      setCookie('wishlistTotal', total, 7);
+      updateTotalDisplay();
+    });
+
+    function updateTotalDisplay() {
+      totalDisplay.textContent = '£' + total.toFixed(2);
+    }
+
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+      const cname = name + "=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(cname) == 0) return c.substring(cname.length, c.length);
+      }
+      return "";
+    }
+  </script>
+</body>
+</html>
